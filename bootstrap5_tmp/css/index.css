@@ -1,9 +1,16 @@
-h1 {
-    color: blueviolet;
+body {
+    background-color: grey;
 }
 
-.head {
-    width: 100%;
+
+
+h1 {
+    color: blueviolet;
+    font-size: 20px;
+}
+
+.rtcol {
+    flex-direction: row;
 }
 
 .row {
@@ -12,16 +19,16 @@ h1 {
 
 @media (max-width: 992px) {
     h1 {
-        color: red;
-        font-size: 20px;
+        color: rgb(8, 8, 8);
+        font-size: 15px;
     }
 
 }
 
 @media (max-width: 576px) {
     .row {
-        flex-direction: column-reverse;
-        
+        flex-direction: row-reverse;        
     }
+
 }
 
