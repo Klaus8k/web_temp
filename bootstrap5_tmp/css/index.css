@@ -11,10 +11,18 @@ h1 {
     flex-direction: row;
 }
 
+.head {
+    display: none !important;
+}
+
 .row {
     flex-direction: row;
 }
 
+.my-card__img {
+    height: 100%;
+    width: 100%;
+}
 
 
 @media (max-width: 992px) {
