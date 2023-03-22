@@ -6,7 +6,12 @@ from aiogram.filters.command import Command
 
 logging.basicConfig(level=logging.INFO)
 
-token = "6241591643:AAG3Fj6XQMejHi5-mLsc1rjKcKkyXDsYiYk"
+token = "6241591643
+:
+AAG3Fj6XQMejHi5
+print()
+-
+mLsc1rjKcKkyXDsYiYk
 
 bot = Bot(token=token)
 
