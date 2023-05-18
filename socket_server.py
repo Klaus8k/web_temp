@@ -1,8 +1,8 @@
 # import requests
 import socket
 
-HOST = 'localhost'
-PORT = 5000
+HOST = '79.133.181.123'
+PORT = 8000 
 
 
 
