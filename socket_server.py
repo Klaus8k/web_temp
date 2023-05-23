@@ -23,5 +23,5 @@ while True:
                     break
                 conn.sendall(data)
                 print(f'connect by {addr} -- {data.decode(encoding="utf-8")} --{x}-- {datetime.datetime.now()}')
-            count += 1
+                count += 1
     
