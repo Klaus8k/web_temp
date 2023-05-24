@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 5000
 
 ENV TZ Europe/Moscow
 

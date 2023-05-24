@@ -18,14 +18,12 @@ while True:
         with conn:
             while count < 3:
                 with open('1/1.txt', 'r') as file:
-	                x = file.read()
+	                adder = file.read()
                 data = conn.recv(1024)
                 if not data:
                     break
-                conn.sendall(data)
-                data_str =data.decode(encoding="utf-8")
-                with open('2.txt', 'w') as wr_file:
-                    wr_file.write(data_str)
-                print(f'connect by {addr} -- {data_str} --{x}-- {datetime.datetime.now()}')
+                data_str = data.decode(encoding="utf-8")
+                responce = f'Получено -- {data_str} Добавка из файла: {adder} Время:{datetime.datetime.now()}'
+				conn.sendall(bytes(responce, encoding='utf-8'))
                 count += 1
     
