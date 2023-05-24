@@ -2,9 +2,9 @@ FROM python:3.8
 
 WORKDIR /app
 
-COPY socket_server.py socket_server.py
+COPY . .
 
-EXPOSE 5000
+EXPOSE 8000
 
 ENV TZ Europe/Moscow
 

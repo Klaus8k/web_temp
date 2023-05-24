@@ -1,7 +1,7 @@
 import socket
 import sys
 
-HOST = '79.133.181.123'
+HOST = 'localhost'
 PORT = 8000
 data = ' '.join(sys.argv[1:])
 

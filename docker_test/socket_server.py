@@ -5,8 +5,7 @@ import socket
 HOST = '0.0.0.0'
 PORT = 5000
 
-with open('./files_for_docker/1.txt', 'r') as file:
-	x = file.read()
+
 
 count = 0
 
@@ -18,10 +17,15 @@ while True:
 
         with conn:
             while count < 3:
+                with open('1/1.txt', 'r') as file:
+	                x = file.read()
                 data = conn.recv(1024)
                 if not data:
                     break
                 conn.sendall(data)
-                print(f'connect by {addr} -- {data.decode(encoding="utf-8")} --{x}-- {datetime.datetime.now()}')
+                data_str =data.decode(encoding="utf-8")
+                with open('2.txt', 'w') as wr_file:
+                    wr_file.write(data_str)
+                print(f'connect by {addr} -- {data_str} --{x}-- {datetime.datetime.now()}')
                 count += 1
     
