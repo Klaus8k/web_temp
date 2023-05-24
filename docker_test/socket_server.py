@@ -14,17 +14,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     sock.listen()
     conn, addr = sock.accept()
 
-while True:
-    with conn:
-            data = conn.recv(1024)
+    while True:
+        with conn:
+                data = conn.recv(1024)
 
-            if not data:
-                break
+                if not data:
+                    break
 
-            data_str = data.decode(encoding="utf-8")
-            responce = f'Получено -- {data_str} Добавка из файла: {read_file()} Время:{datetime.datetime.now()}'
-            conn.sendall(bytes(responce, encoding='utf-8'))
-            print(responce)
+                data_str = data.decode(encoding="utf-8")
+                responce = f'Получено -- {data_str} Добавка из файла: {read_file()} Время:{datetime.datetime.now()}'
+                conn.sendall(bytes(responce, encoding='utf-8'))
+                print(responce)
 
 
     
