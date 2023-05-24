@@ -28,5 +28,6 @@ while True:
                 data_str = data.decode(encoding="utf-8")
                 responce = f'Получено -- {data_str} Добавка из файла: {adder} Время:{datetime.datetime.now()}'
                 conn.sendall(bytes(responce, encoding='utf-8'))
+                print(responce)
                 count += 1
     
