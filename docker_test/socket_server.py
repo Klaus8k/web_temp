@@ -18,8 +18,7 @@ while True:
         with conn:
             while count < 3:
 
-                with open('1/1.txt', 'r') as file:
-	                adder = file.read()
+
 
                 data = conn.recv(1024)
 
@@ -30,4 +29,6 @@ while True:
                 conn.sendall(bytes(responce, encoding='utf-8'))
                 print(responce)
                 count += 1
+	        with open('1/1.txt', 'r') as file:
+                    adder = file.read()
     
