@@ -14,6 +14,7 @@ while True:
 
         with conn:
                 data = conn.recv(1024)
+                adder = '1st request'
 
                 if not data:
                     break
