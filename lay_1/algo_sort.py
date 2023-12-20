@@ -3,7 +3,7 @@ import random
 
 # print(math.log(256, 2))
 
-arr = [i for i in range(1651)]
+arr = [i for i in range(10)]
 rand_arr = [random.randint(1, 10) for i in range(20)]
 # Бинарный поиск
 
@@ -39,16 +39,22 @@ def selsort(arr):
 
 # print(selsort([3, 7, 6, 5, 3]))
 
+# рекурсия
+def recurs_count(a):
+    if a == 0: # базовый случай
+        return 
+    
+    print(a) # рабочая часть функции
+    recurs_count(a - 1) # самовызов функции
 
-def recurs(a):
-    recurs.__setattr__('a', 0)
-    if a < -2:
-        recurs(a + 1)
-    if recurs.__getattribute__('a') == 10:
-        ret
-    print(a)
-    recurs.__setattr__('a', recurs.a + 1)
-    recurs(a - 1)
+# recurs_count(12)
 
+def sum_arr(arr):
+    
+    if len(arr) == 2:
+        return arr[0] + arr[1]
+    arr[-2] = arr[-1] + arr[-2]
 
-recurs(2)
+    return sum_arr(arr[:-1])
+    
+print(sum_arr(rand_arr))
