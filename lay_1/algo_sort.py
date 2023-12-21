@@ -3,7 +3,7 @@ import random
 
 # print(math.log(256, 2))
 
-arr = [i for i in range(10)]
+arr = [i for i in range(30)]
 rand_arr = [random.randint(1, 10) for i in range(20)]
 # Бинарный поиск
 
@@ -40,21 +40,33 @@ def selsort(arr):
 # print(selsort([3, 7, 6, 5, 3]))
 
 # рекурсия
+
+
 def recurs_count(a):
-    if a == 0: # базовый случай
-        return 
-    
-    print(a) # рабочая часть функции
-    recurs_count(a - 1) # самовызов функции
+    if a == 0:  # базовый случай
+        return
+
+    print(a)  # рабочая часть функции
+    recurs_count(a - 1)  # самовызов функции
 
 # recurs_count(12)
 
-def sum_arr(arr):
-    
-    if len(arr) == 2:
-        return arr[0] + arr[1]
-    arr[-2] = arr[-1] + arr[-2]
 
-    return sum_arr(arr[:-1])
-    
-print(sum_arr(rand_arr))
+def sum_arr(arr, n):
+    print(arr)
+    if len(arr) < 2:
+        return 'no answer'
+
+    res_index = len(arr) // 2
+    if arr[res_index] == n:
+        return arr[res_index]
+    else:
+        if arr[res_index] > n:
+            arr = arr[0:res_index]
+            return sum_arr(arr, n)
+        else:
+
+            return sum_arr(arr[res_index:], n)
+
+
+print(sum_arr(sorted(rand_arr), n=int(input())))
