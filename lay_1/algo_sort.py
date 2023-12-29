@@ -70,3 +70,4 @@ def sum_arr(arr, n):
 
 
 print(sum_arr(sorted(rand_arr), n=int(input())))
+print('ready')
