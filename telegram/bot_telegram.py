@@ -8,11 +8,9 @@ from aiogram.utils import exceptions
 logging.basicConfig(level=logging.INFO)
 
 what_it_is = '6241591643'
+token_telegram = what_it_is + ":AAG3Fj6XQMejHi5-mLsc1rjKcKkyXDsYiYk"
 
-token = what_it_is + ":AAG3Fj6XQMejHi5-mLsc1rjKcKkyXDsYiYk"
-print(token)
-
-bot = Bot(token=token, parse_mode=types.ParseMode.HTML)
+bot = Bot(token=token_telegram, parse_mode=types.ParseMode.HTML)
 
 dp = Dispatcher(bot=bot)
 
