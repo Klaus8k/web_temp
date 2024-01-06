@@ -51,7 +51,7 @@ def recurs_count(a):
 
 # recurs_count(12)
 
-
+# Бинарный поиск рекурсией
 def sum_arr(arr, n):
     print(arr)
     if len(arr) < 2:
@@ -69,5 +69,32 @@ def sum_arr(arr, n):
             return sum_arr(arr[res_index:], n)
 
 
-print(sum_arr(sorted(rand_arr), n=int(input())))
-print('ready')
+# print(sum_arr(sorted(rand_arr), n=int(input())))
+
+rand_arr = [random.randint(1, 100) for i in range(100)]
+
+import datetime # Не понятно как декорировать рекурсивную функцию https://stackoverflow.com/questions/10757871/decorating-recursive-functions-in-python
+def timer(foo):
+    def wrapp(*args):
+        a = datetime.datetime.now()
+        res = foo(args)
+        print(datetime.datetime.now() - a)
+        return res
+    return wrapp
+
+# Быстрая сортировка
+def q_sort(arr):
+    
+    if len(arr) < 2:
+        return arr
+    else:
+        point = arr.pop(random.randint(0, len(arr)-1))
+        little_then_point = [i for i in arr if i < point]
+        big_then_point = [i for i in arr if i > point]
+        return q_sort(little_then_point) + [point] + q_sort(big_then_point)
+
+import time
+print(rand_arr)
+a = time.time_ns()
+print(q_sort(rand_arr))    
+print(time.time_ns() - a)
