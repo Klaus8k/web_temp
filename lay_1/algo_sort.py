@@ -1,5 +1,5 @@
-import math
 import random
+import math
 
 # print(math.log(256, 2))
 
