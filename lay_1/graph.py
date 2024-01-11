@@ -29,31 +29,42 @@ mango_seller_search('you')
 
 
 # Взвешенный граф
-graph = {}
-graph['start'] = {}
-graph['start']['a'] = 6
-graph['start']['b'] = 2
-graph['a'] = {}
-graph['a']['fin'] = 1
-graph['b'] = {}
-graph['b']['fin'] = 5
-graph['b']['a'] = 3
-graph['fin'] = {}
+graph = {'start': {'a': 6, 'b': 2}, 'a': {'fin': 1}, 'b': {'a': 3, 'fin': 5}, 'fin': {}}
+costs = {'a': 6, 'b': 2, 'fin': float('inf')}
+parents = {'a': 'start', 'b': 'start', 'fin': None}
 
-ifinity = float('inf')
-costs = {}
-costs['a'] = 6
-costs['b'] = 2
-costs['fin'] = ifinity
 
-parents = {}
-parents['a'] = 'start'
-parents['b'] = 'start'
-parents['fin'] = None
+
+
+
 
 processed = []
 
+def lowest_cost_node(costs):
+    lower = float('inf')
+    lower_node = None
+    for i in costs.keys():
+        if costs[i] < lower and i not in processed:
+            lower = costs[i]
+            lower_node = i
+    return lower_node
 
+
+node = lowest_cost_node(costs) # вершина с минимальным весом от начала(весом пути)
+while node is not None: # Пока все не обошли
+    print(node)
+    cost = costs[node] # мин путь к этой точке
+    neighbors = graph[node] # его соседи
+    for n in neighbors.keys(): # перебор соседей
+        new_cost = cost + neighbors[n] # новый путь = мин путь + путь до соседа
+        if costs[n] > new_cost: # Если новый путь меньше, чем путь соседа с начала
+            costs[n] = new_cost # То Через точку соседа(А) быстрее, присваиваем ей путь от начала
+            parents[n] = node # и родителем соседа(А) ставим опорную точку Ноду. так как путеь будет через А
+    processed.append(node) # Отмечаем в пройденных вершинах
+    node = lowest_cost_node(costs) # Следующий меньший путь в необработанных
 
 
 print(graph)
+print(costs)
+print(parents)
+
