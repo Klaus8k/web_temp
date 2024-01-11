@@ -26,3 +26,34 @@ def mango_seller_search(name):
     return False
 
 mango_seller_search('you')
+
+
+# Взвешенный граф
+graph = {}
+graph['start'] = {}
+graph['start']['a'] = 6
+graph['start']['b'] = 2
+graph['a'] = {}
+graph['a']['fin'] = 1
+graph['b'] = {}
+graph['b']['fin'] = 5
+graph['b']['a'] = 3
+graph['fin'] = {}
+
+ifinity = float('inf')
+costs = {}
+costs['a'] = 6
+costs['b'] = 2
+costs['fin'] = ifinity
+
+parents = {}
+parents['a'] = 'start'
+parents['b'] = 'start'
+parents['fin'] = None
+
+processed = []
+
+
+
+
+print(graph)
