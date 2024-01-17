@@ -6,14 +6,20 @@ stations = {'kone': set(['id', 'nv', 'ut']),
             'kfive': set(['ca', 'az'])}
 
 final_stations = set()
-best_stations = None
-states_covered = set()
-for station, states_for_stations in stations.items():
-    covered = states_needed & states_for_stations
-    if len(covered) > len(states_covered):
-        states_covered = covered
-        best_stations = station
-        states_covered = covered
-final_stations.add(station)
-
+while states_needed:
+    best_stations = None
+    states_covered = set()
+    for station, states_for_stations in stations.items():
+        covered = states_needed & states_for_stations
+        if len(covered) > len(states_covered):
+            states_covered = covered
+            best_stations = station
+            states_covered = covered
+    print(final_stations)
+    final_stations.add(best_stations)
+    states_needed -= states_covered
+    
 print(final_stations)
+
+
+
