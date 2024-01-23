@@ -1,6 +1,4 @@
 {
     "python.linting.mypyEnabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "workbench.editor.enablePreview": false
+    "python.linting.enabled": true
 }
