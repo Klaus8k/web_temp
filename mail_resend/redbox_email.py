@@ -4,7 +4,7 @@ from redmail import EmailSender
 import json
 import imaplib
 import ssl
-
+import base64 
 
 # https://red-mail.readthedocs.io/en/stable/
 # https://red-box.readthedocs.io/en/latest/
@@ -35,7 +35,7 @@ box = EmailBox(
     port=993,
     username=SOURCE_ADDR,
     password=PSWD,
-    cls_imap=SSL_low,
+    # cls_imap=SSL_low,
 )
 
 sender = EmailSender(
@@ -45,18 +45,36 @@ sender = EmailSender(
     password=PSWD
 )
 
-print(box.kws_imap)
+# print(box.kws_imap)
 inbox = box['INBOX']
 
-for msg in inbox.search(UNSEEN):
+mails_list = []
+count = 0
+for msg in inbox.search('ALL'):
     msg.read()
-    print(msg)
 
-    sender = msg.from_
-    subject = msg.subject
+    sender_mail = msg.from_
+    mails_list.append(msg)
+    
+    if msg.from_.lstrip().startswith('='):
+        data = msg.from_.strip('\n\r\t ').split(' ')[0]
+        print(f'---> {data} <---')
+    try:
+        if msg.text_body:
+            count += 1
+            with open('1.txt', 'a+') as file:
+                a = '=====' * 100
+                file.write(msg.text_body)
+                file.write(a + '\n')
+                
+    except TypeError:
+        print('wrong type')
 
-sender.send(
-    subject='resend',
-    receivers=[sender],
-    text=f'Объект пересылки: {subject}',
-)
+print(count, 'записано писим в файл')
+# for i in mails_list:
+#     sender.send(
+#         sender=i.from_,
+#         subject='resend',
+#         receivers=['tipkor@mail.ru',],
+#         text=f'Объект пересылки: {i.text_body}',
+#     )
