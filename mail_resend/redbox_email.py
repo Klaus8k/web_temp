@@ -4,7 +4,7 @@ from redmail import EmailSender
 import json
 import imaplib
 import ssl
-import base64 
+import base64
 
 # https://red-mail.readthedocs.io/en/stable/
 # https://red-box.readthedocs.io/en/latest/
@@ -50,23 +50,26 @@ inbox = box['INBOX']
 
 mails_list = []
 count = 0
+
+
+def clean_base(data):
+    return data.from_.strip('\n\r\t ').split(' ')[0]
+
+
 for msg in inbox.search('ALL'):
-    msg.read()
+    # msg.read()
 
     sender_mail = msg.from_
     mails_list.append(msg)
-    
-    if msg.from_.lstrip().startswith('='):
-        data = msg.from_.strip('\n\r\t ').split(' ')[0]
-        print(f'---> {data} <---')
+
     try:
         if msg.text_body:
-            count += 1
-            with open('1.txt', 'a+') as file:
-                a = '=====' * 100
-                file.write(msg.text_body)
-                file.write(a + '\n')
-                
+            with open('from.txt', 'a+') as file:
+                if not sender_mail[0].isalpha():
+                    file.write(sender_mail + '\n')
+                    # file.write(sender_mail.lstrip() + '\n\n')
+                    count += 1
+
     except TypeError:
         print('wrong type')
 

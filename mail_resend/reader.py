@@ -40,3 +40,7 @@ for i in count_mail.split(b' '):
 # ('OK', [b'(\\HasNoChildren \\Drafts) "/" Drafts',
 # b'(\\HasNoChildren) "/" Spam',b'(\\HasNoChildren \\Trash) "/" Trash',
 # b'(\\HasNoChildren \\Sent) "/" Sent', b'(\\HasNoChildren) "/" INBOX'])
+
+
+# почитать!!!
+https://victor-komlev.ru/dvoichnye-dannye-v-python/
