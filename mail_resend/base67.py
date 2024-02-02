@@ -3,16 +3,19 @@ import base64
 
 with open('from.txt', 'r') as f:
     data = f.read().split()
+print(data)
 
-x = [i for i in data if i.startswith('=')]
+# x = [i for i in data if i.startswith('=')]
 # print(x)
 
 
-for _ in x:
-    if _[0] != '<' or not _[0]:
-        data_t = _.lstrip('=?UTF-8?B?')
+for _ in data:
+    if _[0] != '<':
+        data_t = _[10:]
+        # data_t = _.lstrip('=?UTF-8?B?'.lower())
+
 # проблема в малом регистре и другой кодивровке
-        print(data_t)
+        # print(data_t)
         # try:
         print(base64.b64decode(data_t).decode())
         # except:

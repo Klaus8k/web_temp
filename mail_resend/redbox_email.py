@@ -1,3 +1,4 @@
+import pprint
 from redbox.query import UNSEEN
 from redbox import EmailBox
 from redmail import EmailSender
@@ -61,23 +62,34 @@ for msg in inbox.search('ALL'):
 
     sender_mail = msg.from_
     mails_list.append(msg)
+    html_list = []
 
     try:
         if msg.text_body:
-            with open('from.txt', 'a+') as file:
+            # message = msg.html_body
+            with open('from.txt', 'a+', encoding="utf-8") as file:
                 if not sender_mail[0].isalpha():
-                    file.write(sender_mail + '\n')
-                    # file.write(sender_mail.lstrip() + '\n\n')
-                    count += 1
+                    # file.write(sender_mail + '\n')
+                    # file.write(message)
+                    # html_list.append(message)
+                    file.write('==============' * 10)
+                    # count += 1
 
     except TypeError:
         print('wrong type')
-
+import traceback
 print(count, 'записано писим в файл')
-# for i in mails_list:
-#     sender.send(
-#         sender=i.from_,
-#         subject='resend',
-#         receivers=['tipkor@mail.ru',],
-#         text=f'Объект пересылки: {i.text_body}',
-#     )
+for i in mails_list[:2]:
+    # pprint.pprint(i.headers)
+    try:
+        pprint.pprint(i.headers)
+        sender.send(
+            html=i.html_body,
+            headers=i.headers,
+            sender=i.from_,
+            subject='resend',
+            receivers=['tipkor@mail.ru',],
+            # text=f'Объект пересылки: {i.text_body}',
+        )
+    except ValueError as inst:
+        pprint(traceback.print_exc())
